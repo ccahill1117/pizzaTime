@@ -11,25 +11,27 @@
     <h1>What kind of pizza would you like?</h1>
 
     <form class="form" id="submitOrder">
-      <div class="radio">
-        <label>
-          <input type="radio" name="size" value="M" id="normalCheese">
-          M
-        </label>
+      <div class="selectContainers">
+        <div class="radio">
+          <label>
+            <input type="radio" name="size" value="M" id="normalCheese">
+            M
+          </label>
+        </div>
+        <div class="radio">
+          <label>
+            <input type="radio" name="size" value="L" id="extraCheese">
+            L
+          </label>
+        </div>
+        <div class="radio">
+          <label>
+            <input type="radio" name="size" value="XL" id="extraCheese">
+            XL
+          </label>
+        </div>
       </div>
-      <div class="radio">
-        <label>
-          <input type="radio" name="size" value="L" id="extraCheese">
-          L
-        </label>
-      </div>
-      <div class="radio">
-        <label>
-          <input type="radio" name="size" value="XL" id="extraCheese">
-          XL
-        </label>
-      </div>
-
+    <div class="selectContainers">
       <div class="radio">
         <label>
           <input type="radio" name="cheese" value="normal" id="normalCheese">
@@ -42,7 +44,9 @@
           Extra Cheese ;-)
         </label>
       </div>
-      <div class="form-group">
+    </div>
+    <div class="selectContainers">
+      <div class="toppingSelect">
         <label>Select as many toppings as you would like! (click + shift)</label>
         <select multiple class="form-control" id="multipleToppings">
         <option>Pepperoni</option>
@@ -52,17 +56,21 @@
         <option>Green Onion</option>
         </select>
       </div>
+    </div>
       <button type="submit" id="submitOrderButton">Click here to add pizza to your order!</button>
     </form>
 
 
-    <div class="container" id="pizzaSpace">
-    </div>
+    <ul id="pizzaSpace">
+    </ul>
 
-    <div class="container" id="show-pizza">
-      <p><span class="sizePiz"></span>
-      </p>
-    </div>
+    <!-- <div id="show-pizza">
+      <p>First Name: <span id="sizePiz"></span></p>
+      <p>Last Name: <span class="last-name"></span></p>
+      <p>Phone Number: <span class="phone-number"></span></p>
+      <div id="buttons">
+      </div>
+    </div> -->
 
   </body>
 </html>
