@@ -7,7 +7,7 @@ function Pizza (size, cheese, toppings) {
 
 function Orders() {
   this.pizzas = [];
-  this.currentId = 0;
+  this.pizzaID = 0;
 }
 
 
@@ -70,10 +70,11 @@ var toppingsCost = function(pizza) {
 $(function() {
 
 
-  $("#submitOrder").click(function(event) {
+  $("#submitOrder").submit(function(event) {
+    event.preventDefault();
 
     var whatSize = $("#sizeOption").val();
-    var whatCheese = $("#cheeseOption").val();
+    var whatCheese = $("input:radio[name=cheese]:checked").val();
     var whatToppings = $("#multipleToppings").val();
 
     theseOrders.addOrder(new Pizza(whatSize,whatCheese,whatToppings));
