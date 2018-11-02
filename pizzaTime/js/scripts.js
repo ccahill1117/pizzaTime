@@ -1,3 +1,5 @@
+//Back end
+
 function Pizza (size, cheese, toppings) {
   this.size = size,
   this.cheese = cheese,
@@ -21,6 +23,7 @@ Orders.prototype.assignId = function() {
   return this.pizzaID += 1;
 }
 
+//Functions etc
 var theseOrders = new Orders;
 
 var sizeCost = function(pizza) {
@@ -76,6 +79,9 @@ $(function() {
     var whatSize = $("#sizeOption").val();
     var whatCheese = $("input:radio[name=cheese]:checked").val();
     var whatToppings = $("#multipleToppings").val();
+    $("#sizeOption").val("");
+    $("#multipleToppings").val("");
+
 
     theseOrders.addOrder(new Pizza(whatSize,whatCheese,whatToppings));
 
@@ -86,11 +92,5 @@ $(function() {
     console.log(theseOrders);
 
 
-
   });
-
-
-
-
-
-  });
+});
