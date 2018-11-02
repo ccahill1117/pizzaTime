@@ -91,7 +91,7 @@ function displayPizzas(pizza) {
   var pizzaList = $("ul#pizzaSpace");
   var htmlForPizzaInfo = "";
   pizza.pizzas.forEach(function(pizza) {
-    htmlForPizzaInfo += "<li id=" + pizza.pizzaId + ">" + "🍕" + "Item No: " + pizza.pizzaId + " Size: " + pizza.size + " Cheese Amount: " + pizza.cheese + " Selected Toppings: " + pizza.toppings + " Item Price $" + pizza.price + "</li>";
+    htmlForPizzaInfo += "<li id=" + pizza.pizzaId + ">" + "🍕" + "Item No: " + pizza.pizzaId + " Size: " + pizza.size + " Item Price $" + pizza.price + "</li>";
   });
   pizzaList.html(htmlForPizzaInfo);
 };
@@ -103,18 +103,19 @@ function displayOrderAmount(pizza) {
   return orderAmount;
   }
 
+function attachContactListeners() {
+  $("ul#pizzaSpace").on("click", "li", function() {
+    displayPizzasTotal(this.id);
+  });
+};
 
 function displayPizzasTotal(pizzaId) {
   var pizza = theseOrders.findPizza(pizzaId);
   $("#show-pizza").show();
-  $("#sizePiz").text(pizza.size);
-};
+  $("#sizePiz").html(theseOrders.pizzas[pizzaId-1].size);
+  $("#topsPiz").html(theseOrders.pizzas[pizzaId-1].toppings);
+  $("#cheesePiz").html(theseOrders.pizzas[pizzaId-1].cheese);
 
-
-function attachContactListeners() {
-  $("ul#pizzaSpace").on("click", "li", function() {
-    theseOrders.deletePizza(this.id);
-  });
 };
 
 $(document).ready(function() {
