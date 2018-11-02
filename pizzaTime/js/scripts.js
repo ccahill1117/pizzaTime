@@ -19,3 +19,33 @@ Orders.prototype.addOrder = function(pizza) {
 Orders.prototype.assignId = function() {
   return this.currentId += 1;
 }
+
+
+
+var theseOrders = new Orders;
+
+
+
+
+
+// UI
+
+$(function() {
+
+
+  $("#submitOrder").click(function(event) {
+
+    var whatSize = $("#sizeOption").val();
+    var whatCheese = $("#cheeseOption").val();
+    var whatSauce = $("#sauceOption").val();
+    var whatToppings = $("#toppingsOption").val();
+
+    theseOrders.addOrder(new Pizza(whatSize,whatCheese,whatSauce,whatToppings))
+
+
+    console.log(theseOrders);
+
+  });
+
+
+});
