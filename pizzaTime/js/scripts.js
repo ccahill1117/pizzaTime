@@ -15,12 +15,23 @@ function Orders() {
 
 Orders.prototype.addOrder = function(pizza) {
   this.pizzas.push(pizza);
-  pizza.id = this.assignId();
+  pizza.pizzaId = this.assignId();
 
 }
 
 Orders.prototype.assignId = function() {
   return this.pizzaID += 1;
+}
+
+Orders.prototype.findOrder = function(id) {
+  for (var i=o; i < this.pizzas.length; i++) {
+    if (this.pizzas[i]) {
+      if (this.pizzas[i].pizzaId === id) {
+        return this.pizzas[i];
+      }
+    }
+  };
+  return false;
 }
 
 //Functions etc
@@ -68,6 +79,15 @@ var toppingsCost = function(pizza) {
   }
 }
 
+function displayPizzas(pizza) {
+  var pizzaList = $("div#pizzaSpace");
+  var htmlForPizzaInfo = "";
+  pizza.pizzas.forEach(function(pizza) {
+    htmlForPizzaInfo += "<div id=" + pizza.pizzaId + ">" + pizza.pizzaId + " " + pizza.size + " " + pizza.cheese + "</div>";
+  });
+  pizzaList.html(htmlForPizzaInfo);
+};
+
 // UI
 
 $(function() {
@@ -88,6 +108,8 @@ $(function() {
     sizeCost(theseOrders);
     cheeseCost(theseOrders);
     toppingsCost(theseOrders);
+
+    displayPizzas(theseOrders);
 
     console.log(theseOrders);
 
