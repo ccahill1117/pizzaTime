@@ -38,7 +38,8 @@ $(function() {
     var whatSize = $("#sizeOption").val();
     var whatCheese = $("#cheeseOption").val();
     var whatSauce = $("#sauceOption").val();
-    var whatToppings = $("#toppingsOption").val();
+    var whatToppings = $("#multipleToppings").val();
+    console.log(whatToppings);
 
     theseOrders.addOrder(new Pizza(whatSize,whatCheese,whatSauce,whatToppings))
 
