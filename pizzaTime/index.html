@@ -31,39 +31,43 @@
           </label>
         </div>
       </div>
-    <div class="selectContainers">
-      <div class="radio">
-        <label>
-          <input type="radio" name="cheese" value="normal" id="normalCheese">
-          Normal Cheese
-        </label>
+      <div class="selectContainers">
+        <div class="radio">
+          <label>
+            <input type="radio" name="cheese" value="normal" id="normalCheese">
+            Normal Cheese
+          </label>
+        </div>
+        <div class="radio">
+          <label>
+            <input type="radio" name="cheese" value="extra cheese" id="extraCheese">
+            Extra Cheese ;-)
+          </label>
+        </div>
       </div>
-      <div class="radio">
-        <label>
-          <input type="radio" name="cheese" value="extra cheese" id="extraCheese">
-          Extra Cheese ;-)
-        </label>
+      <div class="selectContainers">
+        <div class="toppingSelect">
+          <label>Select as many toppings as you would like! (click + shift)</label>
+          <select multiple class="form-control" id="multipleToppings">
+            <option>Pepperoni</option>
+            <option>Mushrooms</option>
+            <option>Pineapple</option>
+            <option>Taylor Ham</option>
+            <option>Green Onion</option>
+          </select>
+        </div>
       </div>
-    </div>
-    <div class="selectContainers">
-      <div class="toppingSelect">
-        <label>Select as many toppings as you would like! (click + shift)</label>
-        <select multiple class="form-control" id="multipleToppings">
-        <option>Pepperoni</option>
-        <option>Mushrooms</option>
-        <option>Pineapple</option>
-        <option>Taylor Ham</option>
-        <option>Green Onion</option>
-        </select>
-      </div>
-    </div>
+      <h6>Press Button below to add as many pizzas as you would like to your order!</h6>
       <button type="submit" id="submitOrderButton">Click here to add pizza to your order!</button>
     </form>
 
+    <div class="selectContainers2">
 
-    <ul id="pizzaSpace">
-    </ul>
-
+    <p>Order Total : $<span id="orderTotal"></span>
+    </p>
+      <ul id="pizzaSpace">
+      </ul>
+    </div>
     <!-- <div id="show-pizza">
       <p>First Name: <span id="sizePiz"></span></p>
       <p>Last Name: <span class="last-name"></span></p>
