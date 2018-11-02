@@ -12,7 +12,6 @@ function Orders() {
   this.pizzaID = 0;
 }
 
-
 Orders.prototype.addOrder = function(pizza) {
   this.pizzas.push(pizza);
   pizza.pizzaId = this.assignId();
@@ -100,14 +99,14 @@ function displayPizzas(pizza) {
   pizzaList.html(htmlForPizzaInfo);
 };
 
-// function displayPizzaDetails
-//
-// function orderPrint() {
-//
-// }
-
-// UI
-
+function displayPizzasTotal(pizza) {
+  var pizzaList = $("div#pizzaSpace");
+  var htmlForPizzaInfo = "";
+  pizza.pizzas.forEach(function(pizza) {
+    htmlForPizzaInfo += "<div id=" + pizza.pizzaId + ">" + pizza.pizzaId + " " + pizza.size + " " + pizza.cheese + " " + pizza.toppings + "</div>";
+  });
+  pizzaList.html(htmlForPizzaInfo);
+};
 
 
 $(function() {
@@ -122,9 +121,6 @@ $(function() {
 
     theseOrders.addOrder(new Pizza(whatSize,whatCheese,whatToppings));
 
-
-
-    //
     displayPizzas(theseOrders);
 
     console.log(theseOrders);
@@ -135,10 +131,12 @@ $(function() {
     sizeCost(theseOrders);
     cheeseCost(theseOrders);
     toppingsCost(theseOrders);
+    displayPizzasTotal(theseOrders);
 
 
   });
 
 
-
 });
+
+//Question for code review -- how would I make a prototype to sum the pie prices when they are made? could not figure that out.
