@@ -48,45 +48,42 @@ Orders.prototype.deletePizza = function(id) {
 //Functions etc
 var theseOrders = new Orders;
 
-var sizeCost = function(pizza) {
-  for (i=0; i<theseOrders.pizzas.length; i++)
-  if (theseOrders.pizzas[i].size === "XL") {
-    theseOrders.pizzas[i].price += 10
+var sizeCost = function(pizza,x) {
+  if (theseOrders.pizzas[x].size === "XL") {
+    theseOrders.pizzas[x].price += 10
   }
-  else if (theseOrders.pizzas[i].size === "L") {
-    theseOrders.pizzas[i].price += 7
+  else if (theseOrders.pizzas[x].size === "L") {
+    theseOrders.pizzas[x].price += 7
   }
-  else if (theseOrders.pizzas[i].size === "M") {
-    theseOrders.pizzas[i].price += 5
-  }
-}
-
-var cheeseCost = function(pizza) {
-  for (i=0; i<theseOrders.pizzas.length; i++)
-  if (theseOrders.pizzas[i].cheese === "extra cheese") {
-    theseOrders.pizzas[i].price += 2
-  }
-  else if (theseOrders.pizzas[i].cheese === "normal") {
-    theseOrders.pizzas[i].price += 0
+  else if (theseOrders.pizzas[x].size === "M") {
+    theseOrders.pizzas[x].price += 5
   }
 }
 
-var toppingsCost = function(pizza) {
-  for (i=0; i<theseOrders.pizzas.length; i++)
-  if (theseOrders.pizzas[i].toppings.length === 1) {
-    theseOrders.pizzas[i].price += 1
+var cheeseCost = function(pizza,x) {
+  if (theseOrders.pizzas[x].cheese === "extra cheese") {
+    theseOrders.pizzas[x].price += 2
   }
-  else if (theseOrders.pizzas[i].toppings.length === 2) {
-    theseOrders.pizzas[i].price += 2
+  else if (theseOrders.pizzas[x].cheese === "normal") {
+    theseOrders.pizzas[x].price += 0
   }
-  else if (theseOrders.pizzas[i].toppings.length === 3) {
-    theseOrders.pizzas[i].price += 3
+}
+
+var toppingsCost = function(pizza,x) {
+  if (theseOrders.pizzas[x].toppings.length === 1) {
+    theseOrders.pizzas[x].price += 1
   }
-  else if (theseOrders.pizzas[i].toppings.length === 4) {
-    theseOrders.pizzas[i].price += 4
+  else if (theseOrders.pizzas[x].toppings.length === 2) {
+    theseOrders.pizzas[x].price += 2
   }
-  else if (theseOrders.pizzas[i].toppings.length === 5) {
-    theseOrders.pizzas[i].price += 5
+  else if (theseOrders.pizzas[x].toppings.length === 3) {
+    theseOrders.pizzas[x].price += 3
+  }
+  else if (theseOrders.pizzas[x].toppings.length === 4) {
+    theseOrders.pizzas[x].price += 4
+  }
+  else if (theseOrders.pizzas[x].toppings.length === 5) {
+    theseOrders.pizzas[x].price += 5
   }
 }
 
@@ -94,7 +91,7 @@ function displayPizzas(pizza) {
   var pizzaList = $("div#pizzaSpace");
   var htmlForPizzaInfo = "";
   pizza.pizzas.forEach(function(pizza) {
-    htmlForPizzaInfo += "<div id=" + pizza.pizzaId + ">" + pizza.pizzaId + " " + pizza.size + " " + pizza.cheese + " " + pizza.toppings + "</div>";
+    htmlForPizzaInfo += "<div id=" + pizza.pizzaId + ">" + pizza.pizzaId + " " + pizza.size + " " + pizza.cheese + " " + pizza.toppings + " $" + pizza.price + "</div>";
   });
   pizzaList.html(htmlForPizzaInfo);
 };
@@ -121,6 +118,10 @@ $(function() {
 
     theseOrders.addOrder(new Pizza(whatSize,whatCheese,whatToppings));
 
+    sizeCost(theseOrders,(theseOrders.pizzas.length-1));
+    cheeseCost(theseOrders,(theseOrders.pizzas.length-1));
+    toppingsCost(theseOrders,(theseOrders.pizzas.length-1));
+
     displayPizzas(theseOrders);
 
     console.log(theseOrders);
@@ -128,9 +129,7 @@ $(function() {
 
   $("#totalOrder").click(function(event) {
 
-    sizeCost(theseOrders);
-    cheeseCost(theseOrders);
-    toppingsCost(theseOrders);
+
     displayPizzasTotal(theseOrders);
 
 
