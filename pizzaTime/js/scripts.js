@@ -96,15 +96,18 @@ function displayPizzas(pizza) {
   pizzaList.html(htmlForPizzaInfo);
 };
 
-function displayPizzasTotal(pizza) {
-  var pizzaList = $("div#pizzaSpace");
-  var htmlForPizzaInfo = "";
-  pizza.pizzas.forEach(function(pizza) {
-    htmlForPizzaInfo += "<div id=" + pizza.pizzaId + ">" + pizza.pizzaId + " " + pizza.size + " " + pizza.cheese + " " + pizza.toppings + "</div>";
-  });
-  pizzaList.html(htmlForPizzaInfo);
+function displayPizzasTotal(pizzaId) {
+  var pizza = theseOrders.findPizza(pizzaId);
+  $("#show-pizza").show();
+  $(".sizePiz").html(pizza.size);
+
 };
 
+function attachContactListeners() {
+  $("div#pizzaSpace").on("click", "div", function() {
+    displayPizzasTotal(this.pizzaID);
+  });
+}
 
 $(function() {
   $("#submitOrder").submit(function(event) {
@@ -126,15 +129,6 @@ $(function() {
 
     console.log(theseOrders);
   });
-
-  $("#totalOrder").click(function(event) {
-
-
-    displayPizzasTotal(theseOrders);
-
-
-  });
-
 
 });
 
