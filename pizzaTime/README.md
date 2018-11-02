@@ -14,9 +14,12 @@ _This web page takes pizza pie parameters from a user and returns a pizza price,
 
 ## Specification
 
-* Takes size, cheese, and toppings input from a user for one or more pizzas
+* Takes size, cheese, and toppings input from a user for a pizza
   * Example input : XL; extra cheese; pepperoni and mushroom
-  * Example output : Price and summary of one or more pizzas
+  * Example output : Price and summary of pizza
+then, additionally,
+* Takes size, cheese, and toppings input from a user for one or more pizzas
+* Show details of each pie in an order so all details are not always showing
 
 ## Support and contact details
 
