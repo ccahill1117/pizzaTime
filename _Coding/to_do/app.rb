@@ -38,5 +38,5 @@ post("/tasks") do
   @list = List.find(list_id)
   @task = Task.new({:description => description, :list_id => list_id})
   @task.save()
-  erb(:task_success)
+  erb(:list)
 end
